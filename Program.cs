@@ -9,6 +9,8 @@ namespace Hang_Man
     {
         const int ALLOWED_MISTAKES = 3;
         const char PLACEHOLDER = '_';
+        const char YES = 'y';
+        const char NO = 'n';
         static void Main(string[] args)
         {
             List<string> wordList = new List<string>()                                  //Creates a repository of words to be picked at a random
@@ -24,16 +26,20 @@ namespace Hang_Man
 
             Console.WriteLine("Welcome to the HangMan Game!");
 
-            Console.WriteLine("\nWould you like to play this game? Y/N");               //Initial ask if the user wants to play the game, should automatically seize if user does not want to
-            char userChoice = Console.ReadKey().KeyChar;
+            Console.WriteLine();
 
-            while (!(userChoice == 'y' || userChoice == 'n'))                           //Enables the system and let the user know if the character typed is acceptable
+            Console.WriteLine("Would you like to play this game? Y/N");               //Initial ask if the user wants to play the game, should automatically seize if user does not want to
+            Console.WriteLine();
+            char userChoice = Console.ReadKey(true).KeyChar;
+
+            while (!(userChoice == YES || userChoice == NO))                           //Enables the system and let the user know if the character typed is acceptable
             {
-                Console.WriteLine("\nPlease enter either Y/N:");
-                userChoice = Console.ReadKey().KeyChar;
+                Console.WriteLine("Please enter either Y/N:");
+                Console.WriteLine();
+                userChoice = Console.ReadKey(true).KeyChar;
             }
 
-            while (userChoice == 'y')                                                   //As long as userCHoice is y, it should do a loop
+            while (userChoice == YES)                                                   //As long as userCHoice is y, it should do a loop
             {
                 mistakesLeft = ALLOWED_MISTAKES;                                        //Should count down till the tries are exhausted
                 blankChar.Clear();
@@ -41,7 +47,7 @@ namespace Hang_Man
                 wordIndex = randomWordGenerator.Next(wordList.Count);
                 randomWord = wordList[wordIndex];
 
-                Console.WriteLine("\nLet's Play!");
+                Console.WriteLine("Let's Play!");
                 Console.WriteLine(randomWord);                                          //For checking purposes only
                 Console.WriteLine($"Your word has {randomWord.Length} letters.");
 
@@ -49,20 +55,22 @@ namespace Hang_Man
                 for (int i = 0; i <= randomWord.Length - 1; i++)                        //Places a placeholder variable into a char array that si dependent on the length of the random word generated
                 {
                     blankChar.Add(PLACEHOLDER);
-                    Console.Write("_ ");
+                    Console.Write($"{PLACEHOLDER} ");
                 }
+                Console.WriteLine();
 
-                while (mistakesLeft>0)                                                  //The limiter that dictates when the present game is still allowed to proceed based on the guessed error cap
+                while (mistakesLeft > 0)                                                  //The limiter that dictates when the present game is still allowed to proceed based on the guessed error cap
                 {
+                    Console.WriteLine();
+                    Console.WriteLine("Please guess a letter.\n");
 
-                    Console.WriteLine("\nPlease guess a letter.");
-
-                    char userInput = Console.ReadKey().KeyChar;
+                    char userInput = Console.ReadKey(true).KeyChar;
 
                     while (blankChar.Contains(userInput))                               //Provides guess redundancy check
                     {
-                        Console.WriteLine("\nThe letter has already been guessed, try another letter:");
-                        userInput = Console.ReadKey().KeyChar;
+                        Console.WriteLine();
+                        Console.WriteLine("The letter has already been guessed, try another letter:\n");
+                        userInput = Console.ReadKey(true).KeyChar;
                     }
 
                     for (int i = 0; i < randomWord.Length; i++)                         //The index on the for loop enables, if guessed right, the system to replace the index in the array by the letter that was guessed crrectly in its proper spot
@@ -74,41 +82,47 @@ namespace Hang_Man
                         }
 
                     }
-                    Console.WriteLine($"\nYou have guessed {userInput}");
+                    Console.WriteLine($"You have guessed {userInput}");
+                    Console.WriteLine();
 
                     foreach (char letterAndHolder in blankChar)                         //Enables the display of the unguessed (place holder) and correctly guessed letters
                     {
                         Console.Write($"{letterAndHolder}  ".ToUpper());
                     }
 
+                    Console.WriteLine();
+
                     if (!randomWord.Contains(userInput))                                //If randomWord does NOT contain the guessed character, it executes the loop body which increments the error count by 1
                     {
-                        mistakesLeft--;                       
-                        Console.WriteLine($"\nSorry, wrong letter. You have {mistakesLeft} mistakes left."); //Why does the equation {ALLOWED_MISTAKES - inputErrorCount} work and the premade {mistakesLeft} equation does not
+                        mistakesLeft--;
+                        Console.WriteLine($"Sorry, wrong letter. You have {mistakesLeft} mistakes left."); //Why does the equation {ALLOWED_MISTAKES - inputErrorCount} work and the premade {mistakesLeft} equation does not
                     }
 
                     if (!blankChar.Contains('_'))                                       //The sequence of characters/elements in blankChar will be compared to the the string randomString
                     {
-                        Console.WriteLine("\nYou got it! Whew~");
+                        Console.WriteLine("You got it! Whew~");
                         break;                                                          //Ends the while loop
                     }
 
                 }
 
-                Console.WriteLine("\n~~The End. \n Unless...~~ \nDo you like to play this game? Y/N");
-                userChoice = Console.ReadKey().KeyChar;
+                Console.WriteLine("~~The End. ");
+                Console.WriteLine("Unless...~~");
+                Console.WriteLine("Do you like to play this game? Y/N");
+                userChoice = Console.ReadKey(true).KeyChar;
 
-                while (!(userChoice == 'y' || userChoice == 'n'))                        //Enables the system and let the user know if the character typed is acceptable
+                while (!(userChoice == YES || userChoice == NO))                        //Enables the system and let the user know if the character typed is acceptable
                 {
-                    Console.WriteLine("\nPlease enter either Y/N:");
-                    userChoice = Console.ReadKey().KeyChar;
+                    Console.WriteLine("Please enter either Y/N:");
+                    userChoice = Console.ReadKey(true).KeyChar;
                 }
 
             }
 
-            if (userChoice == 'n')
+            if (userChoice == NO)
             {
-                Console.WriteLine("\n You chose not to play... \n ~~The End.~~");
+                Console.WriteLine("You chose not to play...");
+                Console.WriteLine("~~The End.~~");
 
             }
 
