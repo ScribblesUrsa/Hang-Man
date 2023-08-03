@@ -47,6 +47,7 @@ namespace Hang_Man
                 wordIndex = randomWordGenerator.Next(wordList.Count);
                 randomWord = wordList[wordIndex];
 
+                Console.WriteLine();
                 Console.WriteLine("Let's Play!");
                 Console.WriteLine(randomWord);                                          //For checking purposes only
                 Console.WriteLine($"Your word has {randomWord.Length} letters.");
