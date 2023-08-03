@@ -28,9 +28,8 @@ namespace Hang_Man
 
             Console.WriteLine();
 
-            Console.WriteLine("Would you like to play this game? Y/N");               //Initial ask if the user wants to play the game, should automatically seize if user does not want to
-            Console.WriteLine();
-            char userChoice = Console.ReadKey(true).KeyChar;
+
+            char userChoice = YES;
 
             while (!(userChoice == YES || userChoice == NO))                           //Enables the system and let the user know if the character typed is acceptable
             {
@@ -109,18 +108,14 @@ namespace Hang_Man
 
                 Console.WriteLine("~~The End. ");
                 Console.WriteLine("Unless...~~");
-                Console.WriteLine("Do you like to play this game? Y/N");
+                Console.WriteLine("Do you like to play this game?");
+                Console.WriteLine("Please enter Y to Continue:");
+                Console.WriteLine("Or Enter Any Other Key to Exit...");
                 userChoice = Console.ReadKey(true).KeyChar;
-
-                while (!(userChoice == YES || userChoice == NO))                        //Enables the system and let the user know if the character typed is acceptable
-                {
-                    Console.WriteLine("Please enter either Y/N:");
-                    userChoice = Console.ReadKey(true).KeyChar;
-                }
 
             }
 
-            if (userChoice == NO)
+            if (userChoice != YES)
             {
                 Console.WriteLine("You chose not to play...");
                 Console.WriteLine("~~The End.~~");
