@@ -39,7 +39,7 @@ namespace Hang_Man
 
             while (userChoice == YES)                                                   //As long as userCHoice is y, it should do a loop
             {
-                mistakesLeft = ALLOWED_MISTAKES;                                        //Should count down till the tries are exhausted
+                mistakesLeft = ALLOWED_MISTAKES;                                        
                 blankChar.Clear();
                 Random randomWordGenerator = new Random();                              //Generates a random word based on it's index of the list
                 wordIndex = randomWordGenerator.Next(wordList.Count);
@@ -94,7 +94,7 @@ namespace Hang_Man
                     if (!randomWord.Contains(userInput))                                //If randomWord does NOT contain the guessed character, it executes the loop body which increments the error count by 1
                     {
                         mistakesLeft--;
-                        Console.WriteLine($"Sorry, wrong letter. You have {mistakesLeft} mistakes left."); //Why does the equation {ALLOWED_MISTAKES - inputErrorCount} work and the premade {mistakesLeft} equation does not
+                        Console.WriteLine($"Sorry, wrong letter. You have {mistakesLeft} mistakes left."); 
                     }
 
                     if (!blankChar.Contains('_'))                                       //The sequence of characters/elements in blankChar will be compared to the the string randomString
@@ -120,8 +120,6 @@ namespace Hang_Man
                 Console.WriteLine("~~The End.~~");
 
             }
-
-
         }
     }
 }
