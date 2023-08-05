@@ -21,14 +21,10 @@ namespace Hang_Man
             string randomWord = String.Empty;                                           // Assigns a variable randomString to the randomly picked word based on index in the wordList
             int mistakesLeft = ALLOWED_MISTAKES;
             int wordIndex = 0;
-
-            List<char> blankChar = new List<char>();
+            char userChoice = YES;
 
             Console.WriteLine("Welcome to the HangMan Game!");
-
             Console.WriteLine();
-
-            char userChoice = YES;
 
             while (!(userChoice == YES || userChoice == NO))                           //Enables the system and let the user know if the character typed is acceptable
             {
@@ -36,6 +32,8 @@ namespace Hang_Man
                 Console.WriteLine();
                 userChoice = Console.ReadKey(true).KeyChar;
             }
+
+            List<char> blankChar = new List<char>();
 
             while (userChoice == YES)                                                   //As long as userCHoice is y, it should do a loop
             {
