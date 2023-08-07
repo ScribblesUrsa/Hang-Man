@@ -65,8 +65,8 @@ namespace Hang_Man
                     {
                         Console.WriteLine();
                         Console.WriteLine("The letter has already been guessed, try another letter:\n");
-                        //userInput = Console.ReadKey(true).KeyChar;
-                        continue;
+
+                        continue;                                                       // Removed while loop
                     }
 
                     for (int i = 0; i < randomWord.Length; i++)                         //The index on the for loop enables, if guessed right, the system to replace the index in the array by the letter that was guessed crrectly in its proper spot
