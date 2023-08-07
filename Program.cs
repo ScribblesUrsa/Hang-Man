@@ -53,6 +53,7 @@ namespace Hang_Man
                     blankChar.Add(PLACEHOLDER);
                     Console.Write($"{PLACEHOLDER} ");
                 }
+                
                 Console.WriteLine();
 
                 while (mistakesLeft > 0)                                                  //The limiter that dictates when the present game is still allowed to proceed based on the guessed error cap
@@ -60,15 +61,18 @@ namespace Hang_Man
                     Console.WriteLine();
                     Console.WriteLine("Please guess a letter.\n");
                     char userInput = Console.ReadKey(true).KeyChar;
-
+                    
                     if (blankChar.Contains(userInput))                               //Provides guess redundancy check
                     {
                         Console.WriteLine();
                         Console.WriteLine("The letter has already been guessed, try another letter:\n");
 
                         continue;                                                       // Removed while loop
-                    }
-
+                    } 
+                    
+                    Console.WriteLine($"You have guessed {userInput}");
+                    Console.WriteLine(); 
+                    
                     for (int i = 0; i < randomWord.Length; i++)                         //The index on the for loop enables, if guessed right, the system to replace the index in the array by the letter that was guessed crrectly in its proper spot
                     {
 
@@ -78,21 +82,19 @@ namespace Hang_Man
                         }
 
                     }
-
-                    Console.WriteLine($"You have guessed {userInput}");
-                    Console.WriteLine();
-
+                    
                     foreach (char letterAndHolder in blankChar)                         //Enables the display of the unguessed (place holder) and correctly guessed letters
                     {
                         Console.Write($"{letterAndHolder}  ".ToUpper());
-                    }
-
+                    }                   
+                    
                     Console.WriteLine();
 
                     if (!randomWord.Contains(userInput))                                //If randomWord does NOT contain the guessed character, it executes the loop body which increments the error count by 1
                     {
                         mistakesLeft--;
-                        Console.WriteLine($"Sorry, wrong letter. You have {mistakesLeft} mistakes left."); 
+                        Console.WriteLine($"Sorry, wrong letter. You have {mistakesLeft} mistakes left.");
+                        break;
                     }
 
                     if (!blankChar.Contains('_'))                                       //The sequence of characters/elements in blankChar will be compared to the the string randomString
