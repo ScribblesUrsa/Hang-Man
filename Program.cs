@@ -61,11 +61,12 @@ namespace Hang_Man
                     Console.WriteLine("Please guess a letter.\n");
                     char userInput = Console.ReadKey(true).KeyChar;
 
-                    while (blankChar.Contains(userInput))                               //Provides guess redundancy check
+                    if (blankChar.Contains(userInput))                               //Provides guess redundancy check
                     {
                         Console.WriteLine();
                         Console.WriteLine("The letter has already been guessed, try another letter:\n");
-                        userInput = Console.ReadKey(true).KeyChar;
+                        //userInput = Console.ReadKey(true).KeyChar;
+                        continue;
                     }
 
                     for (int i = 0; i < randomWord.Length; i++)                         //The index on the for loop enables, if guessed right, the system to replace the index in the array by the letter that was guessed crrectly in its proper spot
