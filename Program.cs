@@ -62,6 +62,13 @@ namespace Hang_Man
                     Console.WriteLine("Please guess a letter.\n");
                     char userInput = Console.ReadKey(true).KeyChar;
                     
+                    if (!randomWord.Contains(userInput))                                //If randomWord does NOT contain the guessed character, it executes the loop body which increments the error count by 1
+                    {
+                        mistakesLeft--;
+                        Console.WriteLine($"Sorry, wrong letter. You have {mistakesLeft} mistakes left.");
+                        continue;
+                    }  
+                    
                     if (blankChar.Contains(userInput))                               //Provides guess redundancy check
                     {
                         Console.WriteLine();
@@ -89,13 +96,6 @@ namespace Hang_Man
                     }                   
                     
                     Console.WriteLine();
-
-                    if (!randomWord.Contains(userInput))                                //If randomWord does NOT contain the guessed character, it executes the loop body which increments the error count by 1
-                    {
-                        mistakesLeft--;
-                        Console.WriteLine($"Sorry, wrong letter. You have {mistakesLeft} mistakes left.");
-                        break;
-                    }
 
                     if (!blankChar.Contains('_'))                                       //The sequence of characters/elements in blankChar will be compared to the the string randomString
                     {
