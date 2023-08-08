@@ -27,13 +27,6 @@ namespace Hang_Man
             Console.WriteLine("Welcome to the HangMan Game!");
             Console.WriteLine();
 
-            while (!(userChoice == YES || userChoice == NO))                                //Enables the system and let the user know if the character typed is acceptable
-            {
-                Console.WriteLine("Please enter either Y/N:");
-                Console.WriteLine();
-                userChoice = Console.ReadKey(true).KeyChar;
-            }
-
             List<char> blankChar = new List<char>();
 
             while (userChoice == YES)                                                       //As long as userCHoice is y, it should do a loop
