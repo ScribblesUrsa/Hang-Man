@@ -54,7 +54,8 @@ namespace Hang_Man
                     Console.WriteLine();
                     Console.WriteLine("Please guess a letter.\n");
                     char userInput = Console.ReadKey(true).KeyChar;
-                    
+                    Console.WriteLine($"You have guessed {userInput}");
+
                     if (!randomWord.Contains(userInput))                                    //If randomWord does NOT contain the guessed character, it executes the loop body which increments the error count by 1
                     {
                         mistakesLeft--;
@@ -67,9 +68,8 @@ namespace Hang_Man
                         Console.WriteLine();
                         Console.WriteLine("The letter has already been guessed, try another letter:\n");
                         continue;                                                           // Removed while loop
-                    } 
+                    }                    
                     
-                    Console.WriteLine($"You have guessed {userInput}");
                     Console.WriteLine(); 
                     
                     for (int i = 0; i < randomWord.Length; i++)                             //The index on the for loop enables, if guessed right, the system to replace the index in the array by the letter that was guessed crrectly in its proper spot
