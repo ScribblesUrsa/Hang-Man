@@ -25,12 +25,12 @@ namespace Hang_Man
             Console.WriteLine("Welcome to the HangMan Game!");
             Console.WriteLine();
 
-            List<char> blankChar = new List<char>();
+            List<char> gameChars = new List<char>();
 
             while (userChoice == YES)                                                       //As long as userCHoice is y, it should do a loop
             {
                 mistakesLeft = ALLOWED_MISTAKES;                                        
-                blankChar.Clear();
+                gameChars.Clear();
                 wordIndex = randomWordGenerator.Next(wordList.Count);
                 randomWord = wordList[wordIndex];
 
@@ -40,7 +40,7 @@ namespace Hang_Man
 
                 for (int i = 0; i <= randomWord.Length - 1; i++)                            //Places a placeholder variable into a char array that si dependent on the length of the random word generated
                 {
-                    blankChar.Add(PLACEHOLDER);
+                    gameChars.Add(PLACEHOLDER);
                     Console.Write($"{PLACEHOLDER} ");
                 }
                 
@@ -60,7 +60,7 @@ namespace Hang_Man
                         continue;
                     }  
                     
-                    if (blankChar.Contains(userInput))                                      //Provides guess redundancy check
+                    if (gameChars.Contains(userInput))                                      //Provides guess redundancy check
                     {
                         Console.WriteLine();
                         Console.WriteLine("The letter has already been guessed, try another letter:\n");
@@ -74,19 +74,19 @@ namespace Hang_Man
 
                         if (userInput == randomWord[i])
                         {
-                            blankChar[i] = userInput;
+                            gameChars[i] = userInput;
                         }
 
                     }
                     
-                    foreach (char letterAndHolder in blankChar)                             //Enables the display of the unguessed (place holder) and correctly guessed letters
+                    foreach (char letterAndHolder in gameChars)                             //Enables the display of the unguessed (place holder) and correctly guessed letters
                     {
                         Console.Write($"{letterAndHolder}  ".ToUpper());
                     }                   
                     
                     Console.WriteLine();
 
-                    if (!blankChar.Contains('_'))                                           //The sequence of characters/elements in blankChar will be compared to the the string randomString
+                    if (!gameChars.Contains('_'))                                           //The sequence of characters/elements in blankChar will be compared to the the string randomString
                     {
                         Console.WriteLine("You got it! Whew~");
                         break;                                                              //Ends the while loop
