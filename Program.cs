@@ -36,7 +36,6 @@ namespace Hang_Man
 
                 Console.WriteLine();
                 Console.WriteLine("Let's Play!");
-                Console.WriteLine(randomWord);                                              //For checking purposes only
                 Console.WriteLine($"Your word has {randomWord.Length} letters.");
 
                 for (int i = 0; i <= randomWord.Length - 1; i++)                            //Places a placeholder variable into a char array that si dependent on the length of the random word generated
