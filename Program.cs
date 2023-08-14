@@ -79,7 +79,11 @@ namespace Hang_Man
                             gameChars[i] = userInput;
                         }
 
+                        Console.Write(gameChars[i]);
+
                     }
+
+                    
                     
                     foreach (char letterAndHolder in gameChars)                             //Enables the display of the unguessed (place holder) and correctly guessed letters
                     {
