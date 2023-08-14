@@ -101,12 +101,9 @@ namespace Hang_Man
 
             }
 
-            if (userChoice != YES)
-            {
                 Console.WriteLine("You chose not to play...");
-                Console.WriteLine("~~The End.~~");
-
-            }
+                Console.WriteLine("~~The End.~~");     
+            
         }
     }
 }
