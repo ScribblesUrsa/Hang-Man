@@ -23,7 +23,6 @@ namespace Hang_Man
             char userChoice = YES;
 
             Console.WriteLine("Welcome to the HangMan Game!");
-            Console.WriteLine();
 
             List<char> gameChars = new List<char>();
 
@@ -49,13 +48,15 @@ namespace Hang_Man
                 while (mistakesLeft > 0)                                                    //The limiter that dictates when the present game is still allowed to proceed based on the guessed error cap
                 {
                     Console.WriteLine();
-                    Console.WriteLine("Please guess a letter.\n");
+                    Console.WriteLine("Please guess a letter.");
                     char userInput = Console.ReadKey(true).KeyChar;
+                    Console.WriteLine();
                     Console.WriteLine($"You have guessed {userInput}");
 
                     if (!randomWord.Contains(userInput))                                    //If randomWord does NOT contain the guessed character, it executes the loop body which increments the error count by 1
                     {
                         mistakesLeft--;
+                        Console.WriteLine();
                         Console.WriteLine($"Sorry, wrong letter. You have {mistakesLeft} mistakes left.");
                         continue;
                     }  
@@ -63,7 +64,8 @@ namespace Hang_Man
                     if (gameChars.Contains(userInput))                                      //Provides guess redundancy check
                     {
                         Console.WriteLine();
-                        Console.WriteLine("The letter has already been guessed, try another letter:\n");
+                        Console.WriteLine("The letter has already been guessed, try another letter:");
+                        Console.WriteLine();
                         continue;                                                           // Removed while loop
                     }                    
                     
@@ -86,7 +88,7 @@ namespace Hang_Man
                     
                     Console.WriteLine();
 
-                    if (!gameChars.Contains('_'))                                           //The sequence of characters/elements in blankChar will be compared to the the string randomString
+                    if (!gameChars.Contains(PLACEHOLDER))                                           //The sequence of characters/elements in blankChar will be compared to the the string randomString
                     {
                         Console.WriteLine("You got it! Whew~");
                         break;                                                              //Ends the while loop
