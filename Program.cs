@@ -94,8 +94,11 @@ namespace Hang_Man
 
                 Console.WriteLine("~~The End. ");
                 Console.WriteLine("Unless...~~");
+                Console.WriteLine();
                 Console.WriteLine("Do you like to play this game?");
+                Console.WriteLine();
                 Console.WriteLine("Please enter Y to Continue:");
+                Console.WriteLine();
                 Console.WriteLine("Or Enter Any Other Key to Exit...");
                 userChoice = Console.ReadKey(true).KeyChar;
 
