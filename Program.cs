@@ -28,7 +28,7 @@ namespace Hang_Man
 
             while (userChoice == YES)                                                       //As long as userCHoice is y, it should do a loop
             {
-                mistakesLeft = ALLOWED_MISTAKES;                                        
+                mistakesLeft = ALLOWED_MISTAKES;
                 gameChars.Clear();
                 wordIndex = randomWordGenerator.Next(wordList.Count);
                 randomWord = wordList[wordIndex];
@@ -42,7 +42,7 @@ namespace Hang_Man
                     gameChars.Add(PLACEHOLDER);
                     Console.Write($"{PLACEHOLDER} ");
                 }
-                
+
                 Console.WriteLine();
 
                 while (mistakesLeft > 0)                                                    //The limiter that dictates when the present game is still allowed to proceed based on the guessed error cap
@@ -59,18 +59,18 @@ namespace Hang_Man
                         Console.WriteLine();
                         Console.WriteLine($"Sorry, wrong letter. You have {mistakesLeft} mistakes left.");
                         continue;
-                    }  
-                    
+                    }
+
                     if (gameChars.Contains(userInput))                                      //Provides guess redundancy check
                     {
                         Console.WriteLine();
                         Console.WriteLine("The letter has already been guessed, try another letter:");
                         Console.WriteLine();
                         continue;                                                           // Removed while loop
-                    }                    
-                    
-                    Console.WriteLine(); 
-                    
+                    }
+
+                    Console.WriteLine();
+
                     for (int i = 0; i < randomWord.Length; i++)                             //The index on the for loop enables, if guessed right, the system to replace the index in the array by the letter that was guessed crrectly in its proper spot
                     {
 
@@ -78,18 +78,10 @@ namespace Hang_Man
                         {
                             gameChars[i] = userInput;
                         }
-
-                        Console.Write(gameChars[i]);
-
+                        Console.Write(Char.ToUpper(gameChars[i]));
+                        Console.Write(' ');
                     }
 
-                    
-                    
-                    foreach (char letterAndHolder in gameChars)                             //Enables the display of the unguessed (place holder) and correctly guessed letters
-                    {
-                        Console.Write($"{letterAndHolder}  ".ToUpper());
-                    }                   
-                    
                     Console.WriteLine();
 
                     if (!gameChars.Contains(PLACEHOLDER))                                           //The sequence of characters/elements in blankChar will be compared to the the string randomString
