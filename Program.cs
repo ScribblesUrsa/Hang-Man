@@ -84,14 +84,12 @@ namespace Hang_Man
 
                     Console.WriteLine();
 
-                    if (!gameChars.Contains(PLACEHOLDER))                                           //The sequence of characters/elements in blankChar will be compared to the the string randomString
+                    if (!gameChars.Contains(PLACEHOLDER))                                   //The sequence of characters/elements in blankChar will be compared to the the string randomString
                     {
                         Console.WriteLine("You got it! Whew~");
                         break;                                                              //Ends the while loop
                     }
-
                 }
-
                 Console.WriteLine("~~The End. ");
                 Console.WriteLine("Unless...~~");
                 Console.WriteLine();
@@ -103,10 +101,8 @@ namespace Hang_Man
                 userChoice = Console.ReadKey(true).KeyChar;
 
             }
-
-                Console.WriteLine("You chose not to play...");
-                Console.WriteLine("~~The End.~~");     
-            
+            Console.WriteLine("You chose not to play...");
+            Console.WriteLine("~~The End.~~");
         }
     }
 }
